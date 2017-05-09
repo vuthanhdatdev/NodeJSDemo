@@ -1,0 +1,20 @@
+{
+  "name": "nodejssample",
+  "version": "1.0.0",
+  "description": "demo nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/vuthanhdat/nodejssample.git"
+  },
+  "keywords": [
+    "nodejs",
+    "sample"
+  ],
+  "author": "Vu T. Dat",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/vuthanhdat/nodejssample#readme"
+}
