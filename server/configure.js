@@ -16,11 +16,12 @@ module.exports = function(app)
     }).engine);
     app.set("view engine","handlebars");
     app.use(morgan("dev"));
-    /*
-    app.use(bodyParser({
-      uploadDir:path.join(__dirname, '../public/upload/temp')
+
+    app.use(bodyParser.raw({
+      uploadDir:path.join(__dirname, '../public/upload/temp'),
+      keepExtensions: true
     }));
-    */
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(methodOverride());
