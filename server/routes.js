@@ -3,4 +3,5 @@ var home = require("../controllers/home"),
 
 module.exports.initialize = function(app){
   app.get('/',home.index);
+  app.get("/hello",home.hello);
 };
