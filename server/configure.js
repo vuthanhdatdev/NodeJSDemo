@@ -6,22 +6,28 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     errorhandler = require('errorhandler'),
     routes = require('./routes'),
+    moment = require("moment"),
     exphbs = require("express3-handlebars");
 module.exports = function(app)
 {
     app.engine("handlebars",exphbs.create({
         defaultLayout: "main",
         layoutsDir: app.get("views") + "/layouts",
-        partialsDir: [app.get("views") + "/partials"]
+        partialsDir: [app.get("views") + "/partials"],
+        helpers:{
+          timeago : function(timestamp){
+            return moment(timestamp).startOf('minute').fromNow();
+          }
+        }
     }).engine);
     app.set("view engine","handlebars");
     app.use(morgan("dev"));
-
-    app.use(bodyParser.raw({
+/*
+    app.use(bodyParser({
       uploadDir:path.join(__dirname, '../public/upload/temp'),
       keepExtensions: true
     }));
-
+*/
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(methodOverride());
@@ -31,6 +37,6 @@ module.exports = function(app)
     if (app.get('env') ==='development') {
       app.use(errorhandler());
     }
-    routes.initialize(app);
+    routes.initialize(app, new express.Router());
     return app;
 }

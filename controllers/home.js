@@ -3,6 +3,9 @@ module.exports = {
     res.send('The home:index controller');
   },
   hello: function(req,res) {
-    res.render('index.handlebars');
+    var viewModel = {
+      id : 1
+    };
+    res.render('index.handlebars',viewModel);
   }
 };
