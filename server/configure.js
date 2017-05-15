@@ -34,6 +34,7 @@ module.exports = function(app)
     app.use(cookieParser("some-secret-value-here"));
     app.use(express.Router());
     app.use('/public/', express.static(path.join(__dirname, '../public')));
+    app.use(express.static('public'));
     if (app.get('env') ==='development') {
       app.use(errorhandler());
     }
